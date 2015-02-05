@@ -1,2 +1,3 @@
-# SPAZ-Web
-TheoPrax Projekt - Webanwendung
+# SPAZ - TheoPrax Projekt
+
+Dies ist unser TheoPrax Projekt.
