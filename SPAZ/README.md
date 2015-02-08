@@ -10,6 +10,8 @@ Folgende Programme/Skripte werden benötigt und sollten über die Konsole erreic
 - [Composer](https://getcomposer.org)
 - [Laravel](http://laravel.com/docs/5.0)
 
+Benenne `.env.example` in `.env` um und passe diese an deine Entwicklungsumgebung an.
+
 
 ##OpenSource##
 

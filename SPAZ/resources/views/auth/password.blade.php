@@ -1,48 +1,50 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid">
+<div style="margin-top:20px;">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Reset Password</div>
-				<div class="panel-body">
-					@if (session('status'))
-						<div class="alert alert-success">
-							{{ session('status') }}
-						</div>
-					@endif
+		<div class="small-4 small-offset-4">
 
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+			<div class="panel radius">
 
-					<form class="form-horizontal" role="form" method="POST" action="/password/email">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				<h2>Reset Password</h2>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
+				@if (session('status'))
+					<div class="alert alert-success">
+						{{ session('status') }}
+					</div>
+				@endif
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Send Password Reset Link
-								</button>
-							</div>
+				@if (count($errors) > 0)
+					<div class="alert alert-danger">
+						<strong>Whoops!</strong> There were some problems with your input.<br><br>
+						<ul>
+							@foreach ($errors->all() as $error)
+								<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+					</div>
+				@endif
+
+				<form role="form" method="POST" action="/password/email">
+
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+					<div class="row">
+						<label class="small-12 column">E-Mail Address
+							<input type="email" name="email" value="{{ old('email') }}">
+						</label>
+					</div>
+
+					<div class="row">
+						<div class="small-12 column">
+							<button type="submit" class="right">
+								Send Password Reset Link
+							</button>
 						</div>
-					</form>
-				</div>
+					</div>
+				</form>
+
 			</div>
 		</div>
 	</div>
