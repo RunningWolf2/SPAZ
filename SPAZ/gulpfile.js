@@ -1,16 +1,18 @@
 var elixir = require('laravel-elixir');
 
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Less
- | file for our application, as well as publishing vendor resources.
- |
- */
+var paths = {
+	bower: '../../vendor/bower_components/'
+};
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+
+	mix.sass('app.scss')
+		.scripts([
+			paths.bower + 'jquery/dist/jquery.js',
+			paths.bower + 'modernizr/modernizr.js',
+			paths.bower + 'jquery-placeholder/jquery.placeholder.js',
+			paths.bower + 'jquery.cookie/jquery.cookie.js',
+			paths.bower + 'foundation/js/foundation.js'
+		], 'public/js/app.js');
+
 });
