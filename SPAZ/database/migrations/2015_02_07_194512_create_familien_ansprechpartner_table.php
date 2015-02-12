@@ -37,7 +37,7 @@ class CreateFamilienAnsprechpartnerTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('familien_ansprechpartner');
+		Schema::dropIfExists('familien_ansprechpartner');
 	}
 
 }

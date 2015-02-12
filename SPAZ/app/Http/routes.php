@@ -11,9 +11,17 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+/*
+ * Gleich zu `/home` umleiten
+ */
+Route::get('/', ['as' => 'main', function () {
+	return redirect()->route('home');
+}]);
 
-Route::get('home', 'HomeController@index');
+Route::get('home', [
+	'as' => 'home',
+	'uses' => 'HomeController@index'
+]);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

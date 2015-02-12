@@ -42,7 +42,7 @@ class CreateFamilienTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('familien');
+		Schema::dropIfExists('familien');
 	}
 
 }

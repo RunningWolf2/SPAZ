@@ -37,7 +37,7 @@ class CreateFamilienWeitereAdressenTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('familien_weitere_adressen');
+		Schema::dropIfExists('familien_weitere_adressen');
 	}
 
 }
