@@ -17,21 +17,23 @@ class CreateFamilienTable extends Migration {
 			$table->increments('id');
 			$table->string('anrede');
 			$table->string('name');
-			$table->string('strasse');
-			$table->string('plz');
-			$table->string('ort');
-			$table->string('telefon');
-			$table->string('mobil');
-			$table->string('fax');
-			$table->string('email');
-			$table->decimal('bewilligteFahrzeit', 6, 2);
-			$table->integer('refJugendamt');
-			$table->integer('refMitarbeiter');
-			$table->timestamp('startBetreuung');
-			$table->timestamp('endBetreuung');
-			$table->string('status');
-			$table->string('refAnsprechpartner');
-			$table->string('refWeitereAdressen');
+			$table->string('strasse')->nullable();
+			$table->string('plz')->nullable();
+			$table->string('ort')->nullable();
+			$table->string('telefon')->nullable();
+			$table->string('mobil')->nullable();
+			$table->string('fax')->nullable();
+			$table->string('email')->nullable();
+			$table->text('notizen')->nullable();
+			$table->decimal('bewilligteFahrzeit', 6, 2)->nullable();
+			$table->integer('refJugendamt')->nullable();
+			$table->integer('refMitarbeiter')->nullable();
+			$table->timestamp('startBetreuung')->nullable();
+			$table->timestamp('endeBetreuung')->nullable();
+			$table->string('status')->nullable();
+			$table->string('refAnsprechpartner')->nullable();
+			$table->string('refWeitereAdressen')->nullable();
+			$table->timestamps();
 		});
 	}
 

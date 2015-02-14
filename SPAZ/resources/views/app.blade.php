@@ -33,7 +33,12 @@
 
 			<!-- Left Nav Section -->
 			<ul class="left">
-			  <li><a href="/">Home</a></li>
+				<li><a href="/">Home</a></li>
+				@if (Auth::check())
+					<li>
+						{!! link_to_route('familien_path', 'Familien') !!}
+					</li>
+				@endif
 			</ul>
 
 			<!-- Right Nav Section -->
@@ -43,12 +48,10 @@
 					<li><a href="/auth/login">Login</a></li>
 					<li><a href="/auth/register">Register</a></li>
 				@else
-					<li class="has-dropdown">
-						<a href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
-						<ul class="dropdown">
-							<li><a href="/auth/logout">Logout</a></li>
-						</ul>
+					<li>
+						<a href="#">{{ Auth::user()->name }}</a>
 					</li>
+					<li><a href="/auth/logout">Logout</a></li>
 				@endif
 
 			</ul>

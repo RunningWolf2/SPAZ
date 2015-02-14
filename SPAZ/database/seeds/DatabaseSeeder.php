@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder {
 		Model::unguard();
 
 		$this->call('UserTableSeeder');
+		$this->call('FamilienTableSeeder');
 	}
 
 }
@@ -29,6 +30,29 @@ class UserTableSeeder extends Seeder {
 			'name' => env('ADMIN_NAME'),
 			'email' => env('ADMIN_EMAIL'),
 			'password' => bcrypt('123456789'),
+		]);
+
+	}
+
+}
+
+class FamilienTableSeeder extends Seeder {
+
+	public function run()
+	{
+
+		DB::table('familien')->insert([
+			'anrede'=>'Familie',
+			'name'=>'Mustermann',
+			'created_at'=>new DateTime,
+			'updated_at'=> new DateTime
+		]);
+
+		DB::table('familien')->insert([
+			'anrede'=>'Familie',
+			'name'=>'Quack',
+			'created_at'=>new DateTime,
+			'updated_at'=> new DateTime
 		]);
 
 	}
