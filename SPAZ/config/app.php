@@ -147,6 +147,7 @@ return [
 
 
 		'Illuminate\Html\HtmlServiceProvider',
+		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
 
 	],
 
@@ -196,6 +197,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'      => 'Illuminate\Html\FormFacade',
+    	'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
 
 	],
 

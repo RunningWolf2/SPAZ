@@ -8,6 +8,8 @@
 
 	<link href="/css/app.css" rel="stylesheet">
 
+	<script src="/js/app_head.js"></script>
+
 	<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -35,8 +37,13 @@
 			<ul class="left">
 				<li><a href="/">Home</a></li>
 				@if (Auth::check())
-					<li>
-						{!! link_to_route('familien_path', 'Familien') !!}
+
+					<li class="has-dropdown">
+						<a href="#">Familien</a>
+						<ul class="dropdown">
+							<li>{!! link_to_route('familien_path', 'Übersicht') !!}</li>
+							<li>{!! link_to_route('familie_create_path', 'Neu') !!}</li>
+						</ul>
 					</li>
 				@endif
 			</ul>
@@ -48,10 +55,13 @@
 					<li><a href="/auth/login">Login</a></li>
 					<li><a href="/auth/register">Register</a></li>
 				@else
-					<li>
+					<li class="has-dropdown">
 						<a href="#">{{ Auth::user()->name }}</a>
+						<ul class="dropdown">
+							<li>{!! link_to_route('profile_path', 'Mein Profil') !!}</li>
+							<li><a href="/auth/logout">Logout</a></li>
+						</ul>
 					</li>
-					<li><a href="/auth/logout">Logout</a></li>
 				@endif
 
 			</ul>
@@ -59,9 +69,21 @@
 
 	</nav>
 
+	<?php
+		/* Nur zeigen, wenn die Route auch einen Namen hat. Sonst gäbe es nämlich einen Fehler */
+	?>
+
+	@if (Route::currentRouteName())
+		{!! Breadcrumbs::renderIfExists() !!}
+	@else
+		<nav class="breadcrumbs"></nav>
+	@endif
+
 	@yield('content')
 
 	<!-- Scripts -->
-	<script type="/js/app.js"></script>
+	<script src="/js/app.js"></script>
+
+	<script> $(document).foundation(); </script>
 </body>
 </html>

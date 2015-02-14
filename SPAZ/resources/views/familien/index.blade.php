@@ -10,7 +10,7 @@
 			<div class="radius panel">
 				<h2>Familien</h2>
 
-				{!! link_to_route('familien_create_path', 'Hinzufügen') !!}
+				{!! link_to_route('familie_create_path', 'Hinzufügen') !!}
 
 				<br><br>
 

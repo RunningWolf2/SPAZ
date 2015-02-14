@@ -19,10 +19,7 @@
 
 				@endif
 
-
-
 			</div>
-			{!! link_to_route('familien_path', 'Zurück zu Familien') !!}
 		</div>
 	</div>
 </div>

@@ -28,12 +28,20 @@ Route::get('home', [
 	'uses' => 'HomeController@index'
 ]);
 
+Route::get('profile', [
+	'as' => 'profile_path',
+	'uses' => 'UserController@index'
+]);
+Route::get('profile/edit', [
+	'as' => 'profile_edit_path',
+	'uses' => 'UserController@edit'
+]);
 
 Route::resource('familien', 'FamilienController', [
 	'names' => [
 		'index'   => 'familien_path',
 		'show'    => 'familie_path',
-		'create'  => 'familien_create_path',
+		'create'  => 'familie_create_path',
 		'store'   => 'familien_store_path',
 		'edit'    => 'familien_edit_path',
 		'update'  => 'familie_update_path',
@@ -49,13 +57,6 @@ Route::resource('familien', 'FamilienController', [
 		'destroy'
 	]
 ]);
-
-//Route::get('familien', 'FamilienController@index');
-//Route::get('familien/{familie}', 'FamilienController@show');
-//Route::get('familien/{familie}/edit', 'FamilienController@edit');
-//Route::patch('familien/{familie}', 'FamilienController@update');
-//Route::get('familien/{familie}/nachweise', 'FamilienController@getFamilienNachweise');
-
 
 
 Route::controllers([
