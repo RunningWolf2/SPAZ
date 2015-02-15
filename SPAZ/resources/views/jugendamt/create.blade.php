@@ -7,13 +7,13 @@
 	<div class="row">
 		<div class="small-10 small-offset-1">
 
-			<h2>Neue Familie</h2>
+			<h2>Neues Jugendamt</h2>
 
 			<div class="radius panel">
 
-				{!! Form::open(['route' => 'familien_store_path']) !!}
+				{!! Form::open(['route' => 'jugendamt_store_path']) !!}
 
-					@include ('familien._form')
+					@include ('jugendamt._form')
 
 				{!! Form::close() !!}
 

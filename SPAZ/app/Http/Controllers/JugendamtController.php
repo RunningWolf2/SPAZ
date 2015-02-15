@@ -1,15 +1,15 @@
 <?php namespace SPAZ\Http\Controllers;
 
 use SPAZ\Http\Requests;
-use SPAZ\Http\Requests\CreateFamilieRequest;
+use SPAZ\Http\Requests\CreateJugendamtRequest;
 use SPAZ\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
 use DB;
-use SPAZ\Familie;
+use SPAZ\Jugendamt;
 
-class FamilienController extends Controller {
+class JugendamtController extends Controller {
 
 	/**
 	 * Create a new controller instance.
@@ -27,11 +27,11 @@ class FamilienController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index(Familie $familie)
+	public function index(Jugendamt $jugendamt)
 	{
-		$familien = $familie->get();
+		$jugendaemter = $jugendamt->get();
 
-		return view('familien.index', compact('familien'));
+		return view('jugendamt.index', compact('jugendaemter'));
 	}
 
 	/**
@@ -39,9 +39,9 @@ class FamilienController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function show(Familie $familie)
+	public function show(Jugendamt $jugendamt)
 	{
-		return view('familien.show', compact('familie'));
+		return view('jugendamt.show', compact('jugendamt'));
 	}
 
 
@@ -52,7 +52,7 @@ class FamilienController extends Controller {
 	 */
 	public function create()
 	{
-		return view('familien.create');
+		return view('jugendamt.create');
 	}
 
 	/**
@@ -60,11 +60,11 @@ class FamilienController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(CreateFamilieRequest $request, Familie $familie)
+	public function store(CreateJugendamtRequest $request, Jugendamt $jugendamt)
 	{
-		$familie->create($request->all());
+		$jugendamt->create($request->all());
 
-		return redirect()->route('familien_path');
+		return redirect()->route('jugendaemter_path');
 	}
 
 	/**
@@ -72,9 +72,9 @@ class FamilienController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function edit(Familie $familie)
+	public function edit(Jugendamt $jugendamt)
 	{
-		return view('familien.edit', compact('familie'));
+		return view('jugendamt.edit', compact('jugendamt'));
 	}
 
 
@@ -83,12 +83,12 @@ class FamilienController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function update(Familie $familie, CreateFamilieRequest $request)
+	public function update(Jugendamt $jugendamt, CreateJugendamtRequest $request)
 	{
 
-		$familie->fill($request->input())->save();
+		$jugendamt->fill($request->input())->save();
 
-		return redirect(route('familie_path', [$familie->id]));
+		return redirect(route('jugendamt_path', [$jugendamt->id]));
 	}
 
 	/**

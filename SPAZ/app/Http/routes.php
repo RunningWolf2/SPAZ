@@ -11,7 +11,8 @@
 |
 */
 
-Route::model('familien', 'SPAZ\Familie');
+Route::model('familien',  'SPAZ\Familie');
+Route::model('jugendamt', 'SPAZ\Jugendamt');
 
 /*
  * Gleich zu `/home` umleiten
@@ -43,9 +44,30 @@ Route::resource('familien', 'FamilienController', [
 		'show'    => 'familie_path',
 		'create'  => 'familie_create_path',
 		'store'   => 'familien_store_path',
-		'edit'    => 'familien_edit_path',
+		'edit'    => 'familie_edit_path',
 		'update'  => 'familie_update_path',
 		'destroy' => 'familie_destroy_path'
+	],
+	'only' => [
+		'index',
+		'show',
+		'create',
+		'store',
+		'edit',
+		'update',
+		'destroy'
+	]
+]);
+
+Route::resource('jugendamt', 'JugendamtController', [
+	'names' => [
+		'index'   => 'jugendaemter_path',
+		'show'    => 'jugendamt_path',
+		'create'  => 'jugendamt_create_path',
+		'store'   => 'jugendamt_store_path',
+		'edit'    => 'jugendamt_edit_path',
+		'update'  => 'jugendamt_update_path',
+		'destroy' => 'jugendamt_destroy_path'
 	],
 	'only' => [
 		'index',

@@ -36,6 +36,7 @@
 			<!-- Left Nav Section -->
 			<ul class="left">
 				<li><a href="/">Home</a></li>
+
 				@if (Auth::check())
 
 					<li class="has-dropdown">
@@ -45,7 +46,17 @@
 							<li>{!! link_to_route('familie_create_path', 'Neu') !!}</li>
 						</ul>
 					</li>
+
+					<li class="has-dropdown">
+						<a href="#">Jugend&auml;mter</a>
+						<ul class="dropdown">
+							<li>{!! link_to_route('jugendaemter_path', 'Übersicht') !!}</li>
+							<li>{!! link_to_route('jugendamt_create_path', 'Neu') !!}</li>
+						</ul>
+					</li>
+
 				@endif
+
 			</ul>
 
 			<!-- Right Nav Section -->

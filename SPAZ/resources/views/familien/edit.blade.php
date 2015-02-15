@@ -7,9 +7,9 @@
 	<div class="row">
 		<div class="small-10 small-offset-1">
 
-			<div class="radius panel">
+			<h2>{{ $familie->anrede }} {{ $familie->name }} bearbeiten</h2>
 
-				<h2>{{ $familie->anrede }} {{ $familie->name }} bearbeiten</h2>
+			<div class="radius panel">
 
 				{!! Form::model($familie, ['route' => ['familie_update_path', $familie->id], 'method' => 'PATCH']) !!}
 

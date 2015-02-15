@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder {
 		Model::unguard();
 
 		$this->call('UserTableSeeder');
+		$this->call('JugendamtTableSeeder');
 		$this->call('FamilienTableSeeder');
 	}
 
@@ -36,6 +37,28 @@ class UserTableSeeder extends Seeder {
 
 }
 
+class JugendamtTableSeeder extends Seeder {
+
+	public function run()
+	{
+
+		DB::table('jugendamt')->insert([
+			'name'=>'JA 1',
+			'website'=>'http://google.com',
+			'created_at'=>new DateTime,
+			'updated_at'=> new DateTime
+		]);
+		DB::table('jugendamt')->insert([
+			'name'=>'JA 2',
+			'website'=>'http://google.com',
+			'created_at'=>new DateTime,
+			'updated_at'=> new DateTime
+		]);
+
+	}
+
+}
+
 class FamilienTableSeeder extends Seeder {
 
 	public function run()
@@ -44,6 +67,7 @@ class FamilienTableSeeder extends Seeder {
 		DB::table('familien')->insert([
 			'anrede'=>'Familie',
 			'name'=>'Mustermann',
+			'ref_jugendamt'=> 1,
 			'created_at'=>new DateTime,
 			'updated_at'=> new DateTime
 		]);
@@ -51,6 +75,13 @@ class FamilienTableSeeder extends Seeder {
 		DB::table('familien')->insert([
 			'anrede'=>'Familie',
 			'name'=>'Quack',
+			'created_at'=>new DateTime,
+			'updated_at'=> new DateTime
+		]);
+
+		DB::table('familien')->insert([
+			'anrede'=>'Familie',
+			'name'=>'Musterfrau',
 			'created_at'=>new DateTime,
 			'updated_at'=> new DateTime
 		]);

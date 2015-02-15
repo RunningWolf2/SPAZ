@@ -19,14 +19,15 @@ class CreateFamilienWeitereAdressenTable extends Migration {
 			$table->string('anrede');
 			$table->string('vorname');
 			$table->string('nachname');
-			$table->string('strasse');
-			$table->string('plz');
-			$table->string('ort');
-			$table->string('telefon');
-			$table->string('mobil');
-			$table->string('fax');
-			$table->string('email');
-			$table->longText('sonstiges');
+			$table->string('strasse')->nullable();
+			$table->string('plz')->nullable();
+			$table->string('ort')->nullable();
+			$table->string('telefon')->nullable();
+			$table->string('mobil')->nullable();
+			$table->string('fax')->nullable();
+			$table->string('email')->nullable();
+			$table->longText('sonstiges')->nullable();
+			$table->timestamps();
 		});
 	}
 

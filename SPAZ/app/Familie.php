@@ -27,14 +27,14 @@ class Familie extends Model {
 		'fax',
 		'email',
 		'notizen',
-		'bewilligteFahrzeit',
-		'refJugendamt',
-		'refMitarbeiter',
-		'startBetreuung',
-		'endeBetreuung',
+		'bewilligte_fahrzeit',
+		'ref_jugendamt',
+		'ref_mitarbeiter',
+		'start_betreuung',
+		'end_betreuung',
 		'status',
-		'refAnsprechpartner',
-		'refWeitereAdressen'
+		'ref_ansprechpartner',
+		'ref_weitereAdressen'
 	];
 
 }
