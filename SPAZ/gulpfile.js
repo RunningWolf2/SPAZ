@@ -4,9 +4,10 @@ var paths = {
 	bower: '../../vendor/bower_components/'
 };
 
-elixir(function(mix) {
+elixir(function (mix) {
 
-	mix.sass('app.scss')
+	mix.copy('vendor/bower_components/fontawesome/fonts', 'public/fonts')
+		.sass('app.scss')
 		.scripts([
 			paths.bower + 'jquery-placeholder/jquery.placeholder.js',
 			paths.bower + 'jquery.cookie/jquery.cookie.js',

@@ -1,7 +1,17 @@
+$fa-font-path: "../fonts";
+
 @import "../../../vendor/bower_components/foundation/scss/normalize";
 @import "../../../vendor/bower_components/foundation/scss/foundation";
+@import "../../../vendor/bower_components/fontawesome/scss/font-awesome";
 
+html, body {
+	min-height: 101%;
+}
 
 .container {
 	margin-top: 20px;
+}
+
+.table_max {
+	width: 100%;
 }
