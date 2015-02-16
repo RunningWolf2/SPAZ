@@ -38,7 +38,15 @@
 								<td>{{ $familie->beginn }}</td>
 								<td>{{ $familie->ende }}</td>
 								<td>{{ $familie->ort }}</td>
-								<td>{{ $familie->ref_mitarbeiter }}</td>
+								<td>
+									@if (isset($familie->ref_mitarbeiter))
+										{!! link_to_route(
+												'user_path',
+												SPAZ\User::findOrFail($familie->ref_mitarbeiter)->name,
+												[$familie->ref_mitarbeiter])
+										!!}
+									@endif
+								</td>
 								<td>@if (isset($familie->ref_jugendamt))
 										{!!
 											link_to_route(

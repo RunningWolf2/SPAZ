@@ -26,20 +26,16 @@ class CreateFamilienTable extends Migration {
 			$table->string('email')->nullable();
 			$table->text('notizen')->nullable();
 			$table->decimal('bewilligte_fahrzeit', 6, 2)->nullable();
-			$table->integer('ref_jugendamt')->nullable()->unsigned()->default(null);
-			$table->integer('ref_mitarbeiter')->nullable()->unsigned()->default(null);
+			$table->integer('ref_jugendamt')->nullable()->unsigned();
+			$table->integer('ref_mitarbeiter')->nullable()->unsigned();
 			$table->timestamp('start_betreuung')->nullable();
 			$table->timestamp('end_betreuung')->nullable();
 			$table->string('status')->nullable();
-			$table->integer('ref_ansprechpartner')->nullable()->unsigned()->default(null);
-			$table->integer('ref_weitere_adressen')->nullable()->unsigned()->default(null);
+			$table->integer('ref_ansprechpartner')->nullable()->unsigned();
+			$table->integer('ref_weitere_adressen')->nullable()->unsigned();
 			$table->timestamps();
 
 
-			$table->foreign('ref_jugendamt')
-				->references('id')->on('jugendamt')
-				->onUpdate('cascade')
-				->onDelete('cascade');
 			$table->foreign('ref_mitarbeiter')
 				->references('id')->on('users')
 				->onUpdate('cascade')

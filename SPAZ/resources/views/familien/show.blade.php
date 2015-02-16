@@ -78,11 +78,11 @@
 							</tr>
 							<tr>
 								<td>Jugendamt</td>
-								<td>@if (isset($familie->ref_jugendamt))
+								<td>@if (isset($familie->ref_jugendamt) && $familie->ref_jugendamt != 0)
 										{!!
 											link_to_route(
 												'jugendamt_path',
-												SPAZ\Jugendamt::find($familie->ref_jugendamt)->name,
+												SPAZ\Jugendamt::findOrFail($familie->ref_jugendamt)->name,
 												[$familie->ref_jugendamt]
 											)
 										!!}
@@ -91,7 +91,16 @@
 							</tr>
 							<tr>
 								<td>zugeteilter Mitarbeiter</td>
-								<td>{{ $familie->ref_mitarbeiter }}</td>
+								<td>@if (isset($familie->ref_mitarbeiter) && $familie->ref_mitarbeiter != 0)
+										{!!
+											link_to_route(
+												'user_path',
+												SPAZ\User::findOrFail($familie->ref_mitarbeiter)->name,
+												[$familie->ref_mitarbeiter]
+											)
+										!!}
+									@endif
+								</td>
 							</tr>
 							<tr>
 								<td>Start Betreuung</td>

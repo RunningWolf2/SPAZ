@@ -14,7 +14,14 @@
 
 		<div>
 			{!! Form::label('anrede', 'Anrede:', ['class' => $errors->has('anrede') ? 'error' : '']) !!}
-			{!! Form::text('anrede', null,  ['class' => $errors->has('anrede') ? 'error' : '']) !!}
+			{!!
+				Form::select(
+					'anrede',
+					Config::get('familie.anreden'),
+					null,
+					['class' => $errors->has('anrede') ? 'error' : '',
+					'autocomplete' => 'off'])
+			!!}
 			{!! $errors->first('anrede', '<span class="error">:message</span>') !!}
 		</div>
 		<div>
@@ -76,12 +83,31 @@
 		</div>
 		<div>
 			{!! Form::label('ref_jugendamt', 'zuständiges Jugendamt:', ['class' => $errors->has('ref_jugendamt') ? 'error' : '']) !!}
-			{!! Form::text('ref_jugendamt', null,  ['class' => $errors->has('ref_jugendamt') ? 'error' : '']) !!}
+			<select name="ref_jugendamt" id="ref_jugendamt"
+					autocomplete="off" class="{{ $errors->has('ref_jugendamt') ? 'error' : '' }}">
+				@foreach (SPAZ\Jugendamt::get() as $amt)
+					<option
+						value="{{ $amt->id }}"
+						{!! isset($familie) && $amt->id == $familie->ref_jugendamt ? 'selected="selected"' : '' !!}
+					>{{ $amt->name }}</option>
+				@endforeach
+			</select>
 			{!! $errors->first('ref_jugendamt', '<span class="error">:message</span>') !!}
 		</div>
 		<div>
 			{!! Form::label('ref_mitarbeiter', 'zuständiger Mitarbeiter:', ['class' => $errors->has('ref_mitarbeiter') ? 'error' : '']) !!}
-			{!! Form::text('ref_mitarbeiter', null,  ['class' => $errors->has('ref_mitarbeiter') ? 'error' : '']) !!}
+			<select name="ref_mitarbeiter" id="ref_mitarbeiter"
+					autocomplete="off" class="{{ $errors->has('ref_mitarbeiter') ? 'error' : '' }}">
+				@foreach (SPAZ\User::get() as $mitarbeiter)
+					<option
+						value="{{ $mitarbeiter->id }}"
+						@if ((Form::old('ref_mitarbeiter') == '' && isset($familie) && $mitarbeiter->id == $familie->ref_mitarbeiter)
+							|| Form::old('ref_mitarbeiter') == $mitarbeiter->id)
+							selected="selected"
+						@endif
+					>{{ $mitarbeiter->name }}</option>
+				@endforeach
+			</select>
 			{!! $errors->first('ref_mitarbeiter', '<span class="error">:message</span>') !!}
 		</div>
 		<div>

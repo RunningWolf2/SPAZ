@@ -18,7 +18,7 @@ class FamilienController extends Controller {
 	 */
 	public function __construct()
 	{
-		// Nutzer muss vorher registriert sein
+		// Nutzer muss vorher eingeloggt sein
 		$this->middleware('auth');
 	}
 

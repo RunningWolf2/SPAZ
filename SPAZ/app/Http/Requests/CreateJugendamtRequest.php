@@ -23,7 +23,8 @@ class CreateJugendamtRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' => 'required'
+			'name' => 'required',
+			'website' => 'URL'
 		];
 	}
 

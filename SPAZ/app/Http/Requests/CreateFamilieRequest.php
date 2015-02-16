@@ -24,23 +24,23 @@ class CreateFamilieRequest extends Request {
 	{
 		return [
 			'anrede' => 'required',
-			'name' => 'required'
+			'name' => 'required',
 			//'strasse' => '',
 			//'plz' => '',
-			//'ort' => '',
+			'ort' => 'integer',
 			//'telefon' => '',
 			//'mobil' => '',
 			//'fax' => '',
-			//'email' => '',
+			'email' => 'email',
 			//'notizen' => '',
 			//'bewilligteFahrzeit' => '',
-			//'refJugendamt' => '',
-			//'refMitarbeiter' => '',
+			'ref_jugendamt' => 'integer',
+			'ref_mitarbeiter' => 'required|integer',
 			//'startBetreuung' => '',
 			//'endeBetreuung' => '',
 			//'status' => '',
-			//'refAnsprechpartner' => '',
-			//'refWeitereAdressen' => '',
+			'ref_ansprechpartner' => 'integer',
+			'ref_weitere_adressen' => 'integer',
 		];
 	}
 
