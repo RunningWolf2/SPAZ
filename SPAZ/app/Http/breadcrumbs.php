@@ -11,6 +11,20 @@ Breadcrumbs::register('home', function($breadcrumbs)
 });
 
 /*
+ * User/Mitarbeiter
+ */
+// Startseite > Familien
+Breadcrumbs::register('users_path', function($breadcrumbs) {
+	$breadcrumbs->parent('home');
+	$breadcrumbs->push('Mitarbeiter', route('users_path'));
+});
+// Startseite > Mitarbeiter > Mustermann
+Breadcrumbs::register('user_path', function($breadcrumbs, User $user) {
+	$breadcrumbs->parent('users_path');
+	$breadcrumbs->push($user->name, route('user_path', $user->id));
+});
+
+/*
  * Familien
  */
 // Startseite > Familien

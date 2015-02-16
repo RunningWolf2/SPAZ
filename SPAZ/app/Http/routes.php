@@ -11,6 +11,7 @@
 |
 */
 
+Route::model('users',  'SPAZ\User');
 Route::model('familien',  'SPAZ\Familie');
 Route::model('jugendamt', 'SPAZ\Jugendamt');
 
@@ -36,6 +37,17 @@ Route::get('profile', [
 Route::get('profile/edit', [
 	'as' => 'profile_edit_path',
 	'uses' => 'UserController@edit'
+]);
+
+Route::resource('users', 'UserController', [
+	'names' => [
+		'index'   => 'users_path',
+		'show'    => 'user_path'
+	],
+	'only' => [
+		'index',
+		'show'
+	]
 ]);
 
 Route::resource('familien', 'FamilienController', [
