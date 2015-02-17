@@ -10,7 +10,14 @@
 		</div>
 		<div>
 			{!! Form::label('website', 'Website:', ['class' => $errors->has('website') ? 'error' : '']) !!}
-			{!! Form::text('website', null,  ['class' => $errors->has('website') ? 'error' : '']) !!}
+			<div class="row collapse prefix-radius">
+				<div class="small-3 columns">
+					<span class="prefix">http://</span>
+				</div>
+				<div class="small-9 columns">
+					{!! Form::text('website', null,  ['class' => $errors->has('website') ? 'error' : '']) !!}
+				</div>
+			</div>
 			{!! $errors->first('website', '<span class="error">:message</span>') !!}
 		</div>
 
