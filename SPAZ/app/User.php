@@ -18,7 +18,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $table = 'users';
 
 	/**
-	 * The attributes that are mass assignable.
+	 * Füllbare Felder für eine Familie.
+	 * Werden mehr Felder im Formular angegeben, so werden
+	 * diese nicht weiter beachtet und auch nicht gespeichert.
 	 *
 	 * @var array
 	 */

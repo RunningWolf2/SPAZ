@@ -12,7 +12,9 @@ class Familie extends Model {
 	protected $table = 'familien';
 
 	/**
-	 * Füllbare Felder für eine Familie
+	 * Füllbare Felder für eine Familie.
+	 * Werden mehr Felder im Formular angegeben, so werden
+	 * diese nicht weiter beachtet und auch nicht gespeichert.
 	 *
 	 * @var array
 	 */
@@ -32,9 +34,7 @@ class Familie extends Model {
 		'ref_mitarbeiter',
 		'start_betreuung',
 		'end_betreuung',
-		'status',
-		'ref_ansprechpartner',
-		'ref_weitereAdressen'
+		'status'
 	];
 
 }

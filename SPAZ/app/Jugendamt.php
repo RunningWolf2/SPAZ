@@ -12,7 +12,9 @@ class Jugendamt extends Model {
 	protected $table = 'jugendamt';
 
 	/**
-	 * Füllbare Felder für eine Familie
+	 * Füllbare Felder für eine Familie.
+	 * Werden mehr Felder im Formular angegeben, so werden
+	 * diese nicht weiter beachtet und auch nicht gespeichert.
 	 *
 	 * @var array
 	 */
