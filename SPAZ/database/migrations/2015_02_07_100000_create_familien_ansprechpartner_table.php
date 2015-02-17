@@ -27,6 +27,7 @@ class CreateFamilienAnsprechpartnerTable extends Migration {
 			$table->string('fax')->nullable();
 			$table->string('email')->nullable();
 			$table->longText('sonstiges')->nullable();
+			$table->integer('ref_familie')->unsigned();
 			$table->timestamps();
 		});
 	}

@@ -1,6 +1,7 @@
 <?php
 
 use SPAZ\Familie;
+use SPAZ\FamilienAnsprechpartner;
 use SPAZ\Jugendamt;
 use SPAZ\User;
 
@@ -13,7 +14,7 @@ Breadcrumbs::register('home', function($breadcrumbs)
 /*
  * User/Mitarbeiter
  */
-// Startseite > Familien
+// Startseite > Mitarbeiter
 Breadcrumbs::register('users_path', function($breadcrumbs) {
 	$breadcrumbs->parent('home');
 	$breadcrumbs->push('Mitarbeiter', route('users_path'));
@@ -45,9 +46,26 @@ Breadcrumbs::register('familie_path', function($breadcrumbs, Familie $familie) {
 // Startseite > Familien > Mustermann > Bearbeiten
 Breadcrumbs::register('familie_edit_path', function($breadcrumbs, Familie $familie) {
 	$breadcrumbs->parent('familie_path', $familie);
-	$breadcrumbs->push('bearbeiten', route('familie_path', $familie->id));
+	$breadcrumbs->push('bearbeiten', route('familie_edit_path', $familie->id));
 });
-
+/*
+ * Familien Ansprechpartner
+ */
+// Startseite > Familien > Mustermann > Ansprechpartner
+Breadcrumbs::register('familien_ansprechpartner_path', function($breadcrumbs, Familie $familie) {
+	$breadcrumbs->parent('familie_path', $familie);
+	$breadcrumbs->push('Ansprechpartner', route('familien_ansprechpartner_path', $familie->id));
+});
+// Startseite > Familien > Mustermann > Ansprechpartner > Hinzufügen
+Breadcrumbs::register('familien_ansprechpartner_create_path', function($breadcrumbs, Familie $familie) {
+	$breadcrumbs->parent('familien_ansprechpartner_path', $familie);
+	$breadcrumbs->push('Neu', route('familien_ansprechpartner_create_path', $familie->id));
+});
+// Startseite > Familien > Mustermann > Ansprechpartner > XYZ Bearbeiten
+Breadcrumbs::register('familien_ansprechpartner_edit_path', function($breadcrumbs, Familie $familie, FamilienAnsprechpartner $ansprechpartner) {
+	$breadcrumbs->parent('familien_ansprechpartner_path', $familie);
+	$breadcrumbs->push('bearbeiten', route('familien_ansprechpartner_edit_path', $familie->id, $ansprechpartner->id));
+});
 
 /*
  * Jugendämter

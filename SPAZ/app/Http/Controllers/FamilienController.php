@@ -85,7 +85,6 @@ class FamilienController extends Controller {
 	 */
 	public function update(Familie $familie, CreateFamilieRequest $request)
 	{
-
 		$familie->fill($request->input())->save();
 
 		return redirect(route('familie_path', [$familie->id]));

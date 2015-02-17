@@ -34,21 +34,6 @@ class CreateFamilienTable extends Migration {
 			$table->integer('ref_ansprechpartner')->nullable()->unsigned();
 			$table->integer('ref_weitere_adressen')->nullable()->unsigned();
 			$table->timestamps();
-
-
-			$table->foreign('ref_mitarbeiter')
-				->references('id')->on('users')
-				->onUpdate('cascade')
-				->onDelete('cascade');
-			$table->foreign('ref_ansprechpartner')
-				->references('id')->on('familien_ansprechpartner')
-				->onUpdate('cascade')
-				->onDelete('cascade');
-			$table->foreign('ref_weitere_adressen')
-				->references('id')->on('familien_weitere_adressen')
-				->onUpdate('cascade')
-				->onDelete('cascade');
-
 		});
 	}
 

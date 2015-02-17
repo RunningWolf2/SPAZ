@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UserTableSeeder');
 		$this->call('JugendamtTableSeeder');
 		$this->call('FamilienTableSeeder');
+		$this->call('FamilienAnsprechpartnerTableSeeder');
 	}
 
 }
@@ -67,7 +68,9 @@ class FamilienTableSeeder extends Seeder {
 		DB::table('familien')->insert([
 			'anrede'=>'Familie',
 			'name'=>'Mustermann',
+			'ort'=>'Papenburg',
 			'ref_jugendamt'=> 1,
+			'ref_mitarbeiter'=> 1,
 			'created_at'=>new DateTime,
 			'updated_at'=> new DateTime
 		]);
@@ -75,15 +78,57 @@ class FamilienTableSeeder extends Seeder {
 		DB::table('familien')->insert([
 			'anrede'=>'Familie',
 			'name'=>'Quack',
+			'ort'=>'Dörpen',
+			'ref_jugendamt'=> 1,
+			'ref_mitarbeiter'=> 1,
 			'created_at'=>new DateTime,
 			'updated_at'=> new DateTime
 		]);
 
 		DB::table('familien')->insert([
-			'anrede'=>'Familie',
+			'anrede'=>'Fall',
 			'name'=>'Musterfrau',
+			'ort'=>'Esterwegen',
+			'ref_jugendamt'=> 2,
+			'ref_mitarbeiter'=> 1,
 			'created_at'=>new DateTime,
 			'updated_at'=> new DateTime
+		]);
+
+	}
+
+}
+class FamilienAnsprechpartnerTableSeeder extends Seeder {
+
+	public function run()
+	{
+
+		DB::table('familien_ansprechpartner')->insert([
+			'anrede' => 'Herr',
+			'vorname' => 'Max',
+			'nachname' => 'Mustermann',
+			'ort' => 'Papenburg',
+			'ref_familie' =>  1,
+			'created_at' => new DateTime,
+			'updated_at' =>  new DateTime
+		]);
+		DB::table('familien_ansprechpartner')->insert([
+			'anrede' => 'Herr',
+			'vorname' => 'Test',
+			'nachname' => 'Mustermann',
+			'ort' => 'Papenburg',
+			'ref_familie' =>  1,
+			'created_at' => new DateTime,
+			'updated_at' =>  new DateTime
+		]);
+		DB::table('familien_ansprechpartner')->insert([
+			'anrede' => 'Herr',
+			'vorname' => 'Max',
+			'nachname' => 'Musterfrau',
+			'ort' => 'Esterwegen',
+			'ref_familie' =>  2,
+			'created_at' => new DateTime,
+			'updated_at' =>  new DateTime
 		]);
 
 	}

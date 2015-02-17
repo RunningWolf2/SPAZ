@@ -120,16 +120,7 @@
 				</div>
 
 				<div class="row content" id="panel_ansprechpartner">
-					<div class="columns">
-						<!--<p>
-								{!! link_to_route(
-									'familien_ansprechpartner_path',
-									'Ansprechpartner',
-									[$familie->id]) !!}
-							</p>
-						-->
-						@include ('familien.ansprechpartner._index_table')
-					</div>
+					<p>Ansprechpartner</p>
 				</div>
 
 				<div class="row content" id="panel_weitere_adressen">

@@ -24,7 +24,7 @@
 							<th>Beginn</th>
 							<th>Ende</th>
 							<th>Ort</th>
-							<th>Zuständigs</th>
+							<th>Zuständig</th>
 							<th>Jugendamt</th>
 							<th>Status</th>
 							<th></th>

@@ -11,9 +11,10 @@
 |
 */
 
-Route::model('users',  'SPAZ\User');
-Route::model('familien',  'SPAZ\Familie');
-Route::model('jugendamt', 'SPAZ\Jugendamt');
+Route::model('users',                     'SPAZ\User');
+Route::model('familien',                  'SPAZ\Familie');
+Route::model('familien_ansprechpartner',  'SPAZ\FamilienAnsprechpartner');
+Route::model('jugendamt',                 'SPAZ\Jugendamt');
 
 /*
  * Gleich zu `/home` umleiten
@@ -50,6 +51,7 @@ Route::resource('users', 'UserController', [
 	]
 ]);
 
+
 Route::resource('familien', 'FamilienController', [
 	'names' => [
 		'index'   => 'familien_path',
@@ -70,6 +72,29 @@ Route::resource('familien', 'FamilienController', [
 		'destroy'
 	]
 ]);
+
+
+Route::get('familien/{familien}/ansprechpartner', [
+	'as' => 'familien_ansprechpartner_path',
+	'uses' => 'FamilienAnsprechpartnerController@index'
+]);
+Route::get('familien/{familien}/ansprechpartner/create', [
+	'as' => 'familien_ansprechpartner_create_path',
+	'uses' => 'FamilienAnsprechpartnerController@create'
+]);
+Route::post('familien/ansprechpartner/create', [
+	'as' => 'familien_ansprechpartner_store_path',
+	'uses' => 'FamilienAnsprechpartnerController@store'
+]);
+Route::get('familien/{familien}/ansprechpartner/{familien_ansprechpartner}/edit', [
+	'as' => 'familien_ansprechpartner_edit_path',
+	'uses' => 'FamilienAnsprechpartnerController@edit'
+]);
+Route::patch('familien/ansprechpartner/{familien_ansprechpartner}/edit', [
+	'as' => 'familien_ansprechpartner_update_path',
+	'uses' => 'FamilienAnsprechpartnerController@update'
+]);
+
 
 Route::resource('jugendamt', 'JugendamtController', [
 	'names' => [
