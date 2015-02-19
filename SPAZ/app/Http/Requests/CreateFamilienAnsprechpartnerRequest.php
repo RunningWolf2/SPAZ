@@ -23,8 +23,18 @@ class CreateFamilienAnsprechpartnerRequest extends Request {
 	public function rules()
 	{
 		return [
+			//'typ' => '',
+			//'anrede' => '',
 			'vorname' => 'required',
 			'nachname' => 'required',
+			//'strasse' => '',
+			'plz' => 'integer|digits:5',
+			//'ort' => '',
+			//'telefon' => '',
+			//'mobil' => '',
+			//'fax' => '',
+			'email' => 'email',
+			//'sonstiges' => '',
 			'ref_familie' => 'required|integer|exists:familien,id'
 		];
 	}
