@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+
+use SPAZ\Permission;
+use SPAZ\Role;
 use SPAZ\User;
 
 class DatabaseSeeder extends Seeder {
@@ -19,6 +22,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('JugendamtTableSeeder');
 		$this->call('FamilienTableSeeder');
 		$this->call('FamilienAnsprechpartnerTableSeeder');
+		$this->call('RoleTableSeeder');
 	}
 
 }
@@ -130,6 +134,58 @@ class FamilienAnsprechpartnerTableSeeder extends Seeder {
 			'created_at' => new DateTime,
 			'updated_at' =>  new DateTime
 		]);
+
+	}
+
+}
+
+class RoleTableSeeder extends Seeder {
+
+	public function run()
+	{
+
+		/*
+		 * Nutzerrollen
+		 */
+		$admin = new Role();
+		$admin->name         = 'admin';
+		$admin->display_name = 'Administrator';
+		$admin->description  = 'Admin der Anwendung';
+		$admin->save();
+
+
+		/*
+		 * Berechtigungen
+		 */
+
+		// Familie
+		$createFamilie = new Permission();
+		$createFamilie->name         = 'create-familie';
+		$createFamilie->display_name = 'Familie erstellen';
+		// Erlaube dem Nutzer das...
+		$createFamilie->description  = 'Erstellen einer neue Familie';
+		$createFamilie->save();
+
+		$editFamilie = new Permission();
+		$editFamilie->name         = 'edit-familie';
+		$editFamilie->display_name = 'Familie bearbeiten';
+		$editFamilie->description  = 'Bearbeiten einer Familie';
+		$editFamilie->save();
+
+		//Jugendamt
+		$createJugendamt = new Permission();
+		$createJugendamt->name         = 'create-jugendamt';
+		$createJugendamt->display_name = 'Jugendamt erstellen';
+		$createJugendamt->description  = 'Erstellen eines neuen Jugendamts';
+		$createJugendamt->save();
+
+		$editJugendamt = new Permission();
+		$editJugendamt->name         = 'edit-jugendamt';
+		$editJugendamt->display_name = 'Jugendamt bearbeiten';
+		$editJugendamt->description  = 'Bearbeiten eines Jugendamts';
+		$editJugendamt->save();
+
+		$admin->attachPermissions([$createFamilie, $editFamilie, $createJugendamt, $editJugendamt]);
 
 	}
 

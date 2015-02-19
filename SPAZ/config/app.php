@@ -148,6 +148,7 @@ return [
 
 		'Illuminate\Html\HtmlServiceProvider',
 		'DaveJamesMiller\Breadcrumbs\ServiceProvider',
+		'Zizaco\Entrust\EntrustServiceProvider',
 
 	],
 
@@ -197,7 +198,8 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'      => 'Illuminate\Html\FormFacade',
-    	'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
+		'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
+		'Entrust'     => 'Zizaco\Entrust\EntrustFacade',
 
 	],
 
