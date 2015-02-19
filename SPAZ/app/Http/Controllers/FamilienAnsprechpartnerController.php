@@ -40,7 +40,7 @@ class FamilienAnsprechpartnerController extends Controller {
 	{
 		$ansprechpartner->create($request->all());
 
-		return redirect()->route('familien_ansprechpartner_path', [$request->only('ref_familie')['ref_familie']]);
+		return redirect()->route('familie_path', [$request->only('ref_familie')['ref_familie']]);
 	}
 
 	/**
@@ -75,7 +75,7 @@ class FamilienAnsprechpartnerController extends Controller {
 	{
 		$ansprechpartner->fill($request->input())->save();
 
-		return redirect(route('familien_ansprechpartner_path', [$ansprechpartner->ref_familie]));
+		return redirect(route('familie_path', [$ansprechpartner->ref_familie]));
 	}
 	/**
 	 * Remove the specified resource from storage.
