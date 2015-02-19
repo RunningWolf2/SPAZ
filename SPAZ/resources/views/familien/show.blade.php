@@ -29,43 +29,47 @@
 					<table class="small-6 left columns">
 						<tbody>
 							<tr>
-								<td>Anrede</td>
+								<th>Anrede</th>
 								<td>{{ $familie->anrede }}</td>
 							</tr>
 							<tr>
-								<td>Name</td>
+								<th>Name</th>
 								<td>{{ $familie->name }}</td>
 							</tr>
 							<tr>
-								<td>Straße</td>
+								<th>Straße</th>
 								<td>{{ $familie->strasse }}</td>
 							</tr>
 							<tr>
-								<td>Plz</td>
+								<th>Plz</th>
 								<td>{{ $familie->plz }}</td>
 							</tr>
 							<tr>
-								<td>Ort</td>
+								<th>Ort</th>
 								<td>{{ $familie->ort }}</td>
 							</tr>
 							<tr>
-								<td>Telefon</td>
+								<th>Telefon</th>
 								<td>{{ $familie->telefon }}</td>
 							</tr>
 							<tr>
-								<td>Mobil</td>
+								<th>Mobil</th>
 								<td>{{ $familie->mobil }}</td>
 							</tr>
 							<tr>
-								<td>Fax</td>
+								<th>Fax</th>
 								<td>{{ $familie->fax }}</td>
 							</tr>
 							<tr>
-								<td>E-Mail</td>
-								<td>{{ $familie->email }}</td>
+								<th>E-Mail</th>
+								<td>
+									@if ($familie->email)
+										<a href="mailto:{{$familie->email}}">{{$familie->email}}</a>
+									@endif
+								</td>
 							</tr>
 							<tr>
-								<td>Notizen</td>
+								<th>Notizen</th>
 								<td>{!! nl2br($familie->notizen) !!}</td>
 							</tr>
 						</tbody>
@@ -73,11 +77,11 @@
 					<table class="small-5 left small-offset-1 columns">
 						<tbody>
 							<tr>
-								<td>Bewilligte Fahrzeit</td>
+								<th>Bewilligte Fahrzeit</th>
 								<td>{{ $familie->bewilligteFahrzeit }}</td>
 							</tr>
 							<tr>
-								<td>Jugendamt</td>
+								<th>Jugendamt</th>
 								<td>@if (isset($familie->ref_jugendamt) && $familie->ref_jugendamt != 0)
 										{!!
 											link_to_route(
@@ -90,7 +94,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td>zugeteilter Mitarbeiter</td>
+								<th>zugeteilter Mitarbeiter</th>
 								<td>@if (isset($familie->ref_mitarbeiter) && $familie->ref_mitarbeiter != 0)
 										{!!
 											link_to_route(
@@ -103,15 +107,15 @@
 								</td>
 							</tr>
 							<tr>
-								<td>Start Betreuung</td>
+								<th>Start Betreuung</th>
 								<td>{{ $familie->start_betreuung }}</td>
 							</tr>
 							<tr>
-								<td>Ende Betreuung</td>
+								<th>Ende Betreuung</th>
 								<td>{{ $familie->end_betreuung }}</td>
 							</tr>
 							<tr>
-								<td>Status</td>
+								<th>Status</th>
 								<td>{{ $familie->status }}</td>
 							</tr>
 						</tbody>
