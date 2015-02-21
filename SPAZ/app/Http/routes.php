@@ -33,7 +33,7 @@ Route::get('home', [
 
 Route::get('profile', [
 	'as' => 'profile_path',
-	'uses' => 'UserController@index'
+	'uses' => 'UserController@showProfile'
 ]);
 Route::get('profile/edit', [
 	'as' => 'profile_edit_path',

@@ -38,6 +38,8 @@ class UserTableSeeder extends Seeder {
 			'nachname' => env('ADMIN_NACHNAME'),
 			'email' => env('ADMIN_EMAIL'),
 			'password' => bcrypt('123456789'),
+			'netto_fachleistungsstunden' => 29.5,
+			'aktiv' => 1
 		]);
 
 	}

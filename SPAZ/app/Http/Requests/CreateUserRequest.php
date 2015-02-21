@@ -27,7 +27,8 @@ class CreateUserRequest extends Request {
 			'vorname'  => 'required|max:255',
 			'nachname' => 'required|max:255',
 			'email'    => 'required|email|max:255',
-			'password' => 'confirmed|min:6'
+			'password' => 'confirmed|min:6',
+			'netto_fachleistungsstunden' => 'numeric|max:168' //24*7: 168
 		];
 	}
 

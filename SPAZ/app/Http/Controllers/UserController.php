@@ -27,8 +27,13 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(User $user)
 	{
+		$users = $user->get();
+		return view('users.index', compact('users'));
+	}
+
+	public function showProfile() {
 		return view('profile.index');
 	}
 
