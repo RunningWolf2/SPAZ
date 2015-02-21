@@ -39,6 +39,10 @@ Route::get('profile/edit', [
 	'as' => 'profile_edit_path',
 	'uses' => 'UserController@edit'
 ]);
+Route::patch('profile/update', [
+	'as' => 'profile_update_path',
+	'uses' => 'UserController@update'
+]);
 
 Route::resource('users', 'UserController', [
 	'names' => [

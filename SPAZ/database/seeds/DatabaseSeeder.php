@@ -33,7 +33,9 @@ class UserTableSeeder extends Seeder {
 	{
 
 		User::create([
-			'name' => env('ADMIN_NAME'),
+			'anrede' => env('ADMIN_ANREDE'),
+			'vorname' => env('ADMIN_VORNAME'),
+			'nachname' => env('ADMIN_NACHNAME'),
 			'email' => env('ADMIN_EMAIL'),
 			'password' => bcrypt('123456789'),
 		]);

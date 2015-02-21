@@ -12,7 +12,7 @@
 				<h2>Profil</h2>
 
 				<p>{!! link_to_route('profile_edit_path', 'Bearbeiten') !!}</p>
-				<p>Hallo {{ Auth::user()->name }}!</p>
+				<p>Hallo {{ Auth::user()->vorname }}!</p>
 
 			</div>
 

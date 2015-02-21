@@ -67,7 +67,7 @@
 					<li><a href="/auth/register">Register</a></li>
 				@else
 					<li class="has-dropdown">
-						<a href="#">{{ Auth::user()->name }}</a>
+						<a href="#">{{ Auth::user()->vorname }}</a>
 						<ul class="dropdown">
 							<li>{!! link_to_route('profile_path', 'Mein Profil') !!}</li>
 							<li><a href="/auth/logout">Logout</a></li>

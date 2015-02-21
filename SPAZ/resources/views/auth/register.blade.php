@@ -27,8 +27,25 @@
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 					<div class="row">
-						<label class="small-12 column">Name
-							<input type="text" class="form-control" name="name" value="{{ old('name') }}">
+						<div class="small-12 column">
+							{!! Form::label('anrede', 'Anrede:') !!}
+							{!!
+								Form::select(
+									'anrede',
+									Config::get('user.anreden'))
+							!!}
+						</div>
+					</div>
+
+					<div class="row">
+						<label class="small-12 column">Vorname
+							<input type="text" class="form-control" name="vorname" value="{{ old('vorname') }}">
+						</label>
+					</div>
+
+					<div class="row">
+						<label class="small-12 column">Nachname
+							<input type="text" class="form-control" name="nachname" value="{{ old('nachname') }}">
 						</label>
 					</div>
 
