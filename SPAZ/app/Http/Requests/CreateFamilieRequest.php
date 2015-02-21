@@ -39,8 +39,6 @@ class CreateFamilieRequest extends Request {
 			//'startBetreuung' => '',
 			//'endeBetreuung' => '',
 			//'status' => '',
-			'ref_ansprechpartner' => 'integer',
-			'ref_weitere_adressen' => 'integer',
 		];
 	}
 
