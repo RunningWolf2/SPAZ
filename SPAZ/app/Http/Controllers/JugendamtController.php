@@ -6,7 +6,7 @@ use SPAZ\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-use DB;
+use DB, Auth;
 use SPAZ\Jugendamt;
 
 class JugendamtController extends Controller {
@@ -44,7 +44,6 @@ class JugendamtController extends Controller {
 		return view('jugendamt.show', compact('jugendamt'));
 	}
 
-
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -52,6 +51,11 @@ class JugendamtController extends Controller {
 	 */
 	public function create()
 	{
+		// Nutzer kann Jugendämter erstellen
+		if (!Auth::user()->can('edit-jugendamt'))
+		{
+			return abort(403);
+		}
 		return view('jugendamt.create');
 	}
 
@@ -62,6 +66,12 @@ class JugendamtController extends Controller {
 	 */
 	public function store(CreateJugendamtRequest $request, Jugendamt $jugendamt)
 	{
+		// Nutzer kann Jugendämter erstellen
+		if (!Auth::user()->can('edit-jugendamt'))
+		{
+			return abort(403);
+		}
+
 		$jugendamt->create($request->all());
 
 		return redirect()->route('jugendaemter_path');
@@ -74,9 +84,13 @@ class JugendamtController extends Controller {
 	 */
 	public function edit(Jugendamt $jugendamt)
 	{
+		// Nutzer kann Jugendämter bearbeiten
+		if (!Auth::user()->can('edit-jugendamt'))
+		{
+			return abort(403);
+		}
 		return view('jugendamt.edit', compact('jugendamt'));
 	}
-
 
 	/**
 	 * Update the specified resource in storage.
@@ -85,6 +99,11 @@ class JugendamtController extends Controller {
 	 */
 	public function update(Jugendamt $jugendamt, CreateJugendamtRequest $request)
 	{
+		// Nutzer kann Jugendämter bearbeiten
+		if (!Auth::user()->can('edit-jugendamt'))
+		{
+			return abort(403);
+		}
 
 		$jugendamt->fill($request->input())->save();
 
@@ -99,7 +118,11 @@ class JugendamtController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		// Nutzer kann Jugendämter löschen
+		if (!Auth::user()->can('delete-jugendamt'))
+		{
+			return abort(403);
+		}
 	}
 
 }

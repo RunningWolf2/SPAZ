@@ -141,6 +141,11 @@ class FamilienAnsprechpartnerTableSeeder extends Seeder {
 
 class RoleTableSeeder extends Seeder {
 
+	/*
+	 * Wir nutzen Entrust (https://github.com/Zizaco/entrust/tree/laravel-5)
+	 * zur Rollen und Berechtigungsverwaltung.
+	 */
+
 	public function run()
 	{
 
@@ -153,6 +158,14 @@ class RoleTableSeeder extends Seeder {
 		$admin->description  = 'Admin der Anwendung';
 		$admin->save();
 
+		/*
+		 * Nutzerrollen
+		 */
+		$mitarbeiter = new Role();
+		$mitarbeiter->name         = 'mitarbeiter';
+		$mitarbeiter->display_name = 'Mitarbeiter';
+		$mitarbeiter->description  = 'Mitarbeiter des SPAZ Teams';
+		$mitarbeiter->save();
 
 		/*
 		 * Berechtigungen
@@ -172,6 +185,12 @@ class RoleTableSeeder extends Seeder {
 		$editFamilie->description  = 'Bearbeiten einer Familie';
 		$editFamilie->save();
 
+		$deleteFamilie = new Permission();
+		$deleteFamilie->name         = 'delete-familie';
+		$deleteFamilie->display_name = 'Familie löschen';
+		$deleteFamilie->description  = 'Löschen einer Familie';
+		$deleteFamilie->save();
+
 		//Jugendamt
 		$createJugendamt = new Permission();
 		$createJugendamt->name         = 'create-jugendamt';
@@ -185,7 +204,63 @@ class RoleTableSeeder extends Seeder {
 		$editJugendamt->description  = 'Bearbeiten eines Jugendamts';
 		$editJugendamt->save();
 
-		$admin->attachPermissions([$createFamilie, $editFamilie, $createJugendamt, $editJugendamt]);
+		$deleteJugendamt = new Permission();
+		$deleteJugendamt->name         = 'delete-jugendamt';
+		$deleteJugendamt->display_name = 'Jugendamt löschen';
+		$deleteJugendamt->description  = 'Löschen eines Jugendamts';
+		$deleteJugendamt->save();
+
+		//Nachweise
+		$createNachweis = new Permission();
+		$createNachweis->name         = 'create-nachweis';
+		$createNachweis->display_name = 'Nachweis erstellen';
+		$createNachweis->description  = 'Erstellen eines neuen Nachweises';
+		$createNachweis->save();
+
+		$editNachweis = new Permission();
+		$editNachweis->name         = 'edit-nachweis';
+		$editNachweis->display_name = 'Nachweis bearbeiten';
+		$editNachweis->description  = 'Bearbeiten eines Nachweises';
+		$editNachweis->save();
+
+		$deleteNachweis = new Permission();
+		$deleteNachweis->name         = 'delete-nachweis';
+		$deleteNachweis->display_name = 'Nachweis löschen';
+		$deleteNachweis->description  = 'Löschen eines Nachweises';
+		$deleteNachweis->save();
+
+		/*
+		 * Berechtigungen den Rollen zuordnen
+		 */
+		$admin->attachPermissions([
+			$createFamilie,
+			$editFamilie,
+			$deleteFamilie,
+			$createJugendamt,
+			$editJugendamt,
+			$deleteJugendamt,
+			$createNachweis,
+			$editNachweis,
+			$deleteNachweis
+		]);
+		$mitarbeiter->attachPermissions([
+			$createFamilie,
+			$editFamilie,
+			$deleteFamilie,
+			$createJugendamt,
+			$editJugendamt,
+			$deleteJugendamt,
+			$createNachweis,
+			$editNachweis,
+			$deleteNachweis
+		]);
+
+		/*
+		 * Adminrechte dem ersten User zuteilen
+		 */
+		$user_admin = User::findOrFail(1)->first();
+
+		$user_admin->attachRole($admin);
 
 	}
 

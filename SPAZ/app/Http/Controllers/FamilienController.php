@@ -6,7 +6,7 @@ use SPAZ\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-use DB;
+use DB, Auth;
 use SPAZ\Familie;
 
 class FamilienController extends Controller {
@@ -52,6 +52,11 @@ class FamilienController extends Controller {
 	 */
 	public function create()
 	{
+		// Nutzer kann Familien erstellen
+		if (!Auth::user()->can('create-familie'))
+		{
+			return abort(403);
+		}
 		return view('familien.create');
 	}
 
@@ -62,6 +67,12 @@ class FamilienController extends Controller {
 	 */
 	public function store(CreateFamilieRequest $request, Familie $familie)
 	{
+		// Nutzer kann Familien erstellen
+		if (!Auth::user()->can('create-familie'))
+		{
+			return abort(403);
+		}
+
 		$familie->create($request->all());
 
 		return redirect()->route('familien_path');
@@ -74,6 +85,11 @@ class FamilienController extends Controller {
 	 */
 	public function edit(Familie $familie)
 	{
+		// Nutzer kann Familien bearbeiten
+		if (!Auth::user()->can('edit-familie'))
+		{
+			return abort(403);
+		}
 		return view('familien.edit', compact('familie'));
 	}
 
@@ -85,6 +101,11 @@ class FamilienController extends Controller {
 	 */
 	public function update(Familie $familie, CreateFamilieRequest $request)
 	{
+		// Nutzer kann Familien bearbeiten
+		if (!Auth::user()->can('edit-familie'))
+		{
+			return abort(403);
+		}
 		$familie->fill($request->input())->save();
 
 		return redirect(route('familie_path', [$familie->id]));
@@ -98,7 +119,11 @@ class FamilienController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		// Nutzer kann Familien löschen
+		if (!Auth::user()->can('delete-familie'))
+		{
+			return abort(403);
+		}
 	}
 
 }

@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use SPAZ\Familie;
 use SPAZ\FamilienAnsprechpartner;
 
+use Auth;
+
 class FamilienAnsprechpartnerController extends Controller {
 
 	/**
@@ -28,6 +30,11 @@ class FamilienAnsprechpartnerController extends Controller {
 	 */
 	public function create(Familie $familie)
 	{
+		// Nutzer kann Familien erstellen
+		if (!Auth::user()->can('create-familie'))
+		{
+			return abort(403);
+		}
 		return view('familien.ansprechpartner.create', compact('familie'));
 	}
 
@@ -38,6 +45,12 @@ class FamilienAnsprechpartnerController extends Controller {
 	 */
 	public function store(CreateFamilienAnsprechpartnerRequest $request, FamilienAnsprechpartner $ansprechpartner)
 	{
+		// Nutzer kann Familien erstellen
+		if (!Auth::user()->can('create-familie'))
+		{
+			return abort(403);
+		}
+
 		$ansprechpartner->create($request->all());
 
 		return redirect()->route('familie_path', [$request->only('ref_familie')['ref_familie']]);
@@ -62,6 +75,11 @@ class FamilienAnsprechpartnerController extends Controller {
 	 */
 	public function edit(Familie $familie, FamilienAnsprechpartner $ansprechpartner)
 	{
+		// Nutzer kann Familien bearbeiten
+		if (!Auth::user()->can('edit-familie'))
+		{
+			return abort(403);
+		}
 		return view('familien.ansprechpartner.edit', compact('ansprechpartner', 'familie'));
 	}
 
@@ -73,6 +91,11 @@ class FamilienAnsprechpartnerController extends Controller {
 	 */
 	public function update(CreateFamilienAnsprechpartnerRequest $request, FamilienAnsprechpartner $ansprechpartner)
 	{
+		// Nutzer kann Familien bearbeiten
+		if (!Auth::user()->can('edit-familie'))
+		{
+			return abort(403);
+		}
 		$ansprechpartner->fill($request->input())->save();
 
 		return redirect(route('familie_path', [$ansprechpartner->ref_familie]));
@@ -85,7 +108,11 @@ class FamilienAnsprechpartnerController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		// Nutzer kann Familien löschen
+		if (!Auth::user()->can('delete-familie'))
+		{
+			return abort(403);
+		}
 	}
 
 }
