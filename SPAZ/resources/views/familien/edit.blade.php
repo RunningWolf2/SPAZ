@@ -11,11 +11,15 @@
 
 			<div class="radius panel">
 
-				{!! Form::model($familie, ['route' => ['familie_update_path', $familie->id], 'method' => 'PATCH']) !!}
+				<div class="row">
 
-					@include ('familien._form')
+					{!! Form::model($familie, ['route' => ['familie_update_path', $familie->id], 'method' => 'PATCH']) !!}
 
-				{!! Form::close() !!}
+						@include ('familien._form')
+
+					{!! Form::close() !!}
+
+				</div>
 
 			</div>
 

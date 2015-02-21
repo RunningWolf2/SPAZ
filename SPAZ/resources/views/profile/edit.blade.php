@@ -59,15 +59,23 @@
 								{!! Form::text('email', null, ['class' => $errors->has('email') ? 'error' : '']) !!}
 								{!! $errors->first('email', '<span class="error">:message</span>') !!}
 							</div>
-
+							<div class="postfix-radius row collapse">
+								{!! Form::label('netto_fachleistungsstunden', 'netto Fachl.-Std.:', ['class' => $errors->has('netto_fachleistungsstunden') ? 'error' : '']) !!}
+								<div class="small-9 columns">
+									{!! Form::text('netto_fachleistungsstunden', null, ['class' => $errors->has('netto_fachleistungsstunden') ? 'error text-right' : 'text-right']) !!}
+								</div>
+								<div class="small-3 columns">
+									<span class="postfix">Std./Woche</span>
+								</div>
+								{!! $errors->first('netto_fachleistungsstunden', '<span class="error">:message</span>') !!}
+							</div>
 							<div>
-								<label>Neues Passwort
+								<label>Neues Passwort:
 									<input type="password" class="form-control" name="password">
 								</label>
 							</div>
-
 							<div>
-								<label>Passwort bestätigen
+								<label>Passwort bestätigen:
 									<input type="password" class="form-control" name="password_confirmation">
 								</label>
 							</div>

@@ -42,7 +42,8 @@
 									@if (isset($familie->ref_mitarbeiter))
 										{!! link_to_route(
 												'user_path',
-												SPAZ\User::findOrFail($familie->ref_mitarbeiter)->name,
+												SPAZ\User::findOrFail($familie->ref_mitarbeiter)->vorname
+													.' '.SPAZ\User::findOrFail($familie->ref_mitarbeiter)->nachname,
 												[$familie->ref_mitarbeiter])
 										!!}
 									@endif

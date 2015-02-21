@@ -11,11 +11,17 @@
 
 			<div class="radius panel">
 
-				{!! Form::open(['route' => 'familien_store_path']) !!}
+				<div class="row">
 
-					@include ('familien._form')
+					{!! Form::open(['route' => 'familien_store_path']) !!}
 
-				{!! Form::close() !!}
+						@include ('familien._form')
+
+						{!! Form::submit('Familie speichern', ['class' => 'button']) !!}
+
+					{!! Form::close() !!}
+
+				</div>
 
 			</div>
 

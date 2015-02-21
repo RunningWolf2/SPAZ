@@ -4,7 +4,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+
+	<title>SPAZ - Johannesburg GmbH</title>
 
 	<link href="/css/app.css" rel="stylesheet">
 
@@ -44,6 +45,13 @@
 						<ul class="dropdown">
 							<li>{!! link_to_route('familien_path', 'Übersicht') !!}</li>
 							<li>{!! link_to_route('familie_create_path', 'Neu') !!}</li>
+						</ul>
+					</li>
+
+					<li class="has-dropdown">
+						<a href="#">Mitarbeiter</a>
+						<ul class="dropdown">
+							<li>{!! link_to_route('users_path', 'Übersicht') !!}</li>
 						</ul>
 					</li>
 
